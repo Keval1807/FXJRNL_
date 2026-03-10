@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+  body {
+    @apply bg-bg text-tx font-sans;
+    overflow: hidden;
+  }
+  ::-webkit-scrollbar { width: 4px; height: 4px; }
+  ::-webkit-scrollbar-track { @apply bg-bg2; }
+  ::-webkit-scrollbar-thumb { @apply bg-border2 rounded-sm; }
+}
+
+@layer components {
+  .card {
+    @apply bg-bg2 border border-border rounded-2xl;
+  }
+  .input {
+    @apply bg-bg3 border border-border2 rounded-lg px-3 py-2 text-tx text-sm
+           focus:outline-none focus:border-green transition-colors w-full
+           placeholder:text-tx4 font-mono;
+  }
+  .label {
+    @apply text-[10px] font-bold uppercase tracking-wide text-tx3 block mb-1;
+  }
+  .btn {
+    @apply px-4 py-2 rounded-lg text-sm font-semibold transition-all cursor-pointer border;
+  }
+  .btn-ghost {
+    @apply btn bg-bg3 border-border2 text-tx2 hover:border-green hover:text-green;
+  }
+  .btn-primary {
+    @apply btn bg-gradient-to-r from-green to-blue border-transparent text-black font-bold
+           shadow-lg shadow-green/20 hover:opacity-90 hover:-translate-y-px;
+  }
+  .btn-danger {
+    @apply btn bg-red/10 border-red/30 text-red hover:bg-red hover:text-white;
+  }
+  .pill {
+    @apply inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold tracking-wide uppercase font-mono;
+  }
+  .pill-buy  { @apply pill bg-green/10 text-green border border-green/20; }
+  .pill-sell { @apply pill bg-red/10   text-red   border border-red/20;   }
+  .pill-win  { @apply pill bg-green/10 text-green border border-green/20; }
+  .pill-loss { @apply pill bg-red/10   text-red   border border-red/20;   }
+  .stat-card {
+    @apply card p-5 flex flex-col gap-1;
+  }
+  .stat-label {
+    @apply text-[9.5px] font-bold uppercase tracking-wider text-tx3;
+  }
+  .stat-value {
+    @apply text-xl font-bold font-mono;
+  }
+  .page-title {
+    @apply text-lg font-bold mb-4;
+  }
+  .section-title {
+    @apply text-[11px] font-bold uppercase tracking-wider text-tx3 mb-3;
+  }
+}
+
+/* Gauge animation */
+.gauge-fill {
+  transition: stroke-dasharray 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Toast notification */
+.toast-enter { animation: toast-in 0.2s ease forwards; }
+@keyframes toast-in {
+  from { opacity: 0; transform: translateX(16px); }
+  to   { opacity: 1; transform: translateX(0);    }
+}
